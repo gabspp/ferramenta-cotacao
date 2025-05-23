@@ -126,7 +126,8 @@ function gerarMensagem() {
     
     listaItens.forEach(item => {
         const li = document.createElement('li');
-        li.textContent = `${item.nome} (${item.quantidade})`;
+        // Removendo a quantidade dos itens na mensagem
+        li.textContent = item.nome;
         mensagemItensEl.appendChild(li);
     });
     
@@ -134,10 +135,18 @@ function gerarMensagem() {
 }
 
 function copiarMensagem() {
-    const mensagemTexto = document.getElementById('mensagem-texto');
-    const texto = mensagemTexto.innerText;
+    // Criar uma versão otimizada da mensagem para WhatsApp
+    let mensagemOtimizada = "Bom dia! Gostaria de verificar a disponibilidade e os preços dos seguintes itens:";
     
-    navigator.clipboard.writeText(texto)
+    // Adicionar cada item em uma nova linha, sem formatação extra
+    listaItens.forEach(item => {
+        mensagemOtimizada += "\n- " + item.nome;
+    });
+    
+    mensagemOtimizada += "\n\nObrigado!";
+    
+    // Copiar a mensagem otimizada
+    navigator.clipboard.writeText(mensagemOtimizada)
         .then(() => {
             copiaFeedback.classList.remove('hidden');
             setTimeout(() => {
