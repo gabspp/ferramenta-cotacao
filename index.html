@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Cotação para Confeitaria</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Sistema de Cotação para Confeitaria</h1>
+        </header>
+
+        <main>
+            <section class="section" id="lista-section">
+                <h2>Lista de Itens</h2>
+                <div class="input-group">
+                    <input type="text" id="novo-item" placeholder="Digite um item...">
+                    <input type="number" id="quantidade-item" placeholder="Quantidade" min="1" value="1">
+                    <button id="adicionar-item">Adicionar</button>
+                </div>
+                <ul id="lista-itens"></ul>
+                <div class="buttons-group">
+                    <button id="limpar-lista">Limpar Lista</button>
+                    <button id="gerar-mensagem">Gerar Mensagem</button>
+                </div>
+                <div id="mensagem-container" class="hidden">
+                    <h3>Mensagem para Fornecedores</h3>
+                    <div id="mensagem-texto">
+                        <p>Bom dia! Gostaria de verificar a disponibilidade e os preços dos seguintes itens:</p>
+                        <ul id="mensagem-itens"></ul>
+                        <p>Obrigado!</p>
+                    </div>
+                    <button id="copiar-mensagem">Copiar Mensagem</button>
+                    <div id="copia-feedback" class="hidden">Mensagem copiada!</div>
+                </div>
+            </section>
+
+            <section class="section" id="cotacao-section">
+                <h2>Tabela de Cotação</h2>
+                <div class="table-controls">
+                    <button id="adicionar-fornecedor">Adicionar Fornecedor</button>
+                    <button id="zerar-tabela">Zerar Tabela</button>
+                </div>
+                <div class="table-container">
+                    <table id="tabela-cotacao">
+                        <thead>
+                            <tr id="cabecalho-tabela">
+                                <th>Item</th>
+                                <th>Quantidade</th>
+                                <th class="fornecedor-col" data-index="0">
+                                    <div class="fornecedor-header">
+                                        <input type="text" class="fornecedor-nome" value="Arcofoods">
+                                        <button class="remover-fornecedor">×</button>
+                                    </div>
+                                </th>
+                                <th class="fornecedor-col" data-index="1">
+                                    <div class="fornecedor-header">
+                                        <input type="text" class="fornecedor-nome" value="Rio Quality">
+                                        <button class="remover-fornecedor">×</button>
+                                    </div>
+                                </th>
+                                <th class="fornecedor-col" data-index="2">
+                                    <div class="fornecedor-header">
+                                        <input type="text" class="fornecedor-nome" value="Top Alto">
+                                        <button class="remover-fornecedor">×</button>
+                                    </div>
+                                </th>
+                                <th class="fornecedor-col" data-index="3">
+                                    <div class="fornecedor-header">
+                                        <input type="text" class="fornecedor-nome" value="CCN">
+                                        <button class="remover-fornecedor">×</button>
+                                    </div>
+                                </th>
+                                <th>Melhor Preço</th>
+                            </tr>
+                        </thead>
+                        <tbody id="corpo-tabela">
+                            <!-- Linhas da tabela serão adicionadas dinamicamente -->
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td colspan="2"><strong>Total</strong></td>
+                                <td class="total-col" data-index="0">R$ 0,00</td>
+                                <td class="total-col" data-index="1">R$ 0,00</td>
+                                <td class="total-col" data-index="2">R$ 0,00</td>
+                                <td class="total-col" data-index="3">R$ 0,00</td>
+                                <td id="melhor-fornecedor">-</td>
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            <p>Sistema de Cotação para Confeitaria - Desenvolvido para facilitar seu trabalho</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
